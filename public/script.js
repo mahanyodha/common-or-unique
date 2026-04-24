@@ -1,4 +1,24 @@
-const socket = io();
+function createRoom() {
+  console.log("Create clicked"); // DEBUG
+
+  name = document.getElementById("name").value;
+
+  if (!name) {
+    alert("Enter your name");
+    return;
+  }
+
+  room = Math.random().toString(36).substring(2, 7).toUpperCase();
+
+  console.log("Room created:", room);
+
+  socket.emit("join", { room, name });
+
+  document.getElementById("home").classList.add("hidden");
+  document.getElementById("lobby").classList.remove("hidden");
+
+  document.getElementById("roomDisplay").innerText = "Room: " + room;
+}const socket = io();
 
 let room, name, isHost = false, myEntries = [];
 function generateRoomCode() {
