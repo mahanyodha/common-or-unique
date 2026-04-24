@@ -24,11 +24,16 @@ function createRoom() {
 }
 function join() {
   name = document.getElementById("name").value;
-  room = document.getElementById("room").value;
+  room = document.getElementById("room").value.toUpperCase();
 
-  socket.emit("join", {room, name});
+  if (!name || !room) {
+    alert("Enter name and room code");
+    return;
+  }
 
-  document.getElementById("join").classList.add("hidden");
+  socket.emit("join", { room, name });
+
+  document.getElementById("home").classList.add("hidden");
   document.getElementById("lobby").classList.remove("hidden");
 }
 
