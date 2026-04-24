@@ -5,38 +5,83 @@ body {
   color: white;
   display: flex;
   justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
+/* Main card */
 .card {
   width: 95%;
-  max-width: 400px;
+  max-width: 420px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 20px;
   text-align: center;
-  margin-top: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
-input, button, select {
-  width: 90%;
+/* Title */
+h1 {
+  margin-bottom: 20px;
+}
+
+/* Inputs & buttons */
+input, select, button {
+  width: 100%;
   padding: 12px;
-  margin: 8px;
+  margin: 8px 0;
   border-radius: 12px;
   border: none;
+  font-size: 16px;
 }
 
+/* Inputs */
+input, select {
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
+/* Buttons */
 button {
   background: #ffcc00;
+  color: black;
   font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
+button:hover {
+  transform: scale(1.05);
+}
+
+/* Hidden sections */
 .hidden {
   display: none;
 }
 
-.reveal {
-  font-size: 28px;
-  animation: pop 0.6s ease;
+/* Player list */
+#players p {
+  background: rgba(255,255,255,0.1);
+  padding: 8px;
+  border-radius: 8px;
+  margin: 5px 0;
+}
+
+/* Role animation */
+#roleReveal {
+  font-size: 30px;
+  margin: 15px 0;
+  animation: pop 0.5s ease;
 }
 
 @keyframes pop {
   from { transform: scale(0); }
   to { transform: scale(1); }
+}
+
+/* Leaderboard */
+#scores p {
+  margin: 6px 0;
+  font-weight: bold;
 }
