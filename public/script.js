@@ -1,7 +1,27 @@
 const socket = io();
 
 let room, name, isHost = false, myEntries = [];
+function generateRoomCode() {
+  return Math.random().toString(36).substring(2, 7).toUpperCase();
+}
 
+function createRoom() {
+  name = document.getElementById("name").value;
+
+  if (!name) {
+    alert("Enter your name first");
+    return;
+  }
+
+  room = generateRoomCode();
+
+  socket.emit("join", { room, name });
+
+  document.getElementById("home").classList.add("hidden");
+  document.getElementById("lobby").classList.remove("hidden");
+
+  alert("Room Code: " + room + " (Share this with friends)");
+}
 function join() {
   name = document.getElementById("name").value;
   room = document.getElementById("room").value;
