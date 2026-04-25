@@ -43,6 +43,8 @@ function createRoom() {
   alert("Room Code: " + room + " (Share this with friends)");
 }
 function join() {
+  console.log("Join clicked"); // DEBUG
+
   name = document.getElementById("name").value;
   room = document.getElementById("room").value.toUpperCase();
 
@@ -51,6 +53,11 @@ function join() {
     return;
   }
 
+  socket.emit("join", { room, name });
+
+  document.getElementById("home").classList.add("hidden");
+  document.getElementById("lobby").classList.remove("hidden");
+}
   socket.emit("join", { room, name });
 
   document.getElementById("home").classList.add("hidden");
