@@ -1,3 +1,4 @@
+console.log("JS LOADED");
 function createRoom() {
   console.log("Create clicked"); // DEBUG
 
