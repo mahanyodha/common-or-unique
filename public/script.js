@@ -68,7 +68,13 @@ function join() {
 socket.on("players", data => {
   let div = document.getElementById("players");
 
-  div.innerHTML = data.players.map(p => `<p>${p.name}</p>`).join("");
+ playersDiv.innerHTML = "";
+
+players.forEach(p => {
+  if (p && p.name) {
+    playersDiv.innerHTML += `<p>${p.name}</p>`;
+  }
+});
 
   isHost = data.host === socket.id;
 
