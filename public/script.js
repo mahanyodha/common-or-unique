@@ -63,7 +63,7 @@ function join() {
 
   document.getElementById("home").classList.add("hidden");
   document.getElementById("lobby").classList.remove("hidden");
-}
+
 
 socket.on("players", data => {
   let div = document.getElementById("players");
