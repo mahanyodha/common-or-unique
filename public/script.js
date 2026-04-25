@@ -13,8 +13,7 @@ function createRoom() {
 
   console.log("Room created:", room);
 
-  socket.emit("join", { room, name });
-
+socket.emit("join", { room, name });
   document.getElementById("home").classList.add("hidden");
   document.getElementById("lobby").classList.remove("hidden");
 
