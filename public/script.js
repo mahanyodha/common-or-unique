@@ -64,16 +64,20 @@ function join() {
   document.getElementById("lobby").classList.remove("hidden");
 
 
-socket.on("players", data => {
+socket.on("players", (data) => {
+
+  console.log("PLAYERS:", data); // 👈 DEBUG
+
   let div = document.getElementById("players");
 
- playersDiv.innerHTML = "";
+  div.innerHTML = "";
 
-players.forEach(p => {
-  if (p && p.name) {
-    playersDiv.innerHTML += `<p>${p.name}</p>`;
-  }
-});
+  data.players.forEach(p => {
+    if (p && p.name) {
+      div.innerHTML += `<p>${p.name}</p>`;
+    }
+  });
+
 
   isHost = data.host === socket.id;
 
